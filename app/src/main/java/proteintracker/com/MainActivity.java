@@ -21,6 +21,14 @@ public class MainActivity extends AppCompatActivity {
         textView.setText(R.string.test_untuk_update_view);
 
         Button myBtn = (Button) findViewById(R.id.button);
+        Button buttonLayout = findViewById(R.id.buttonLayout);
+        buttonLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent (MainActivity.this,Main2Activity.class);
+                startActivity(intent);
+            }
+        });
         myBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -30,11 +38,14 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
-        myBtn.setOnClickListener(myBtnClickListener);
-        Button helpBtn = (Button)findViewById(R.id.helpButton);
-        helpBtn.setOnClickListener(helpButtonListener);
         if(savedInstanceState != null){
             Log.d("ProteinTracker",savedInstanceState.getString("abc")); }
+       //myBtn.setOnClickListener(myBtnClickListener);
+        Button helpBtn = (Button)findViewById(R.id.helpButton);
+        helpBtn.setOnClickListener(helpButtonListener);
+
+
+       myBtn.setOnClickListener(helpButtonLis);
     }
 
     private View.OnClickListener myBtnClickListener = new View.OnClickListener() {
@@ -52,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
 
         }
     };
+
+
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -71,7 +84,8 @@ public class MainActivity extends AppCompatActivity {
         b.putString("helpString",myEditText.getText().toString());
         intent.putExtras(b);
 
-        startActivity(intent);     }
+        startActivity(intent);
+        }
     };
 
 
